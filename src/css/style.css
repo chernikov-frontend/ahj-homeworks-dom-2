@@ -1,0 +1,53 @@
+/* Стили для таблицы Loading and Sorting */
+#loadingSorting {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 2px solid #4CAF50;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #f9fff9;
+}
+
+#loadingSorting thead {
+    background-color: #e8f5e9;
+}
+
+#loadingSorting th, #loadingSorting td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#loadingSorting th {
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Стили для таблицы In-Memory Sorting */
+#inMemorySorting {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 2px solid #f44336;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #fff5f5;
+}
+
+#inMemorySorting thead {
+    background-color: #ffebee;
+}
+
+#inMemorySorting th, #inMemorySorting td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#inMemorySorting th {
+    cursor: pointer;
+    background-color: #f44336;
+    color: white;
+}
