@@ -1,4 +1,3 @@
-
 import fetchMovies from './mockData.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -28,14 +27,15 @@ function createInMemoryTable(tableBody, movies) {
     fields.forEach(field => {
         const header = document.querySelector(`#inMemorySorting th:nth-child(${fields.indexOf(field) + 1})`);
         header.addEventListener('click', () => {
-        sortInMemoryRows(tableBody, field);
+        const currentOrder = header.classList.contains('sort-asc') ? 1 : -1;
+        sortInMemoryRows(tableBody, field, currentOrder);
+        updateSortIndicator(header, currentOrder);
         });
     });
 }
 
-function sortInMemoryRows(tableBody, field) {
+function sortInMemoryRows(tableBody, field, order) {
     const rows = Array.from(tableBody.querySelectorAll('tr'));
-    const order = rows[0].dataset[field] > rows[rows.length - 1].dataset[field] ? -1 : 1;
 
     rows.sort((a, b) => {
         const valueA = a.dataset[field];
@@ -56,4 +56,19 @@ function updateInMemoryTable(tableBody, rows) {
     });
 }
 
-// module.exports = { sortInMemoryRows };
+function updateSortIndicator(clickedHeader, currentOrder) {
+  // Сначала удаляем все индикаторы сортировки
+    const headers = document.querySelectorAll('#inMemorySorting th');
+    headers.forEach(header => {
+        header.classList.remove('sort-asc', 'sort-desc');
+    });
+
+    // Определяем текущее направление сортировки и переключаем его
+    if (currentOrder === 1) {
+        clickedHeader.classList.remove('sort-asc');
+        clickedHeader.classList.add('sort-desc');
+    } else {
+        clickedHeader.classList.remove('sort-desc');
+        clickedHeader.classList.add('sort-asc');
+    }
+}

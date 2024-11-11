@@ -1,4 +1,3 @@
-// Подключение данных с сервера
 import fetchMovies from './mockData.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -27,6 +26,7 @@ function createTable(tableBody, movies) {
 }
 
 function startSorting(tableBody) {
+    const headers = document.querySelectorAll('#loadingSorting th');
     const rows = Array.from(tableBody.querySelectorAll('tr'));
     let fieldIndex = 0;
     let order = 1;
@@ -35,6 +35,7 @@ function startSorting(tableBody) {
     setInterval(() => {
         sortRows(rows, fields[fieldIndex], order);
         updateTableBody(tableBody, rows);
+        updateSortIndicator(headers[fieldIndex], order);
         order *= -1;
         if (order < 0) fieldIndex = (fieldIndex + 1) % fields.length;
     }, 2000);
@@ -58,4 +59,17 @@ function updateTableBody(tableBody, rows) {
     });
 }
 
+function updateSortIndicator(header, order) {
+  // Сначала удаляем все индикаторы сортировки
+    const headers = document.querySelectorAll('#loadingSorting th');
+    headers.forEach(header => {
+        header.classList.remove('sort-asc', 'sort-desc');
+    });
 
+    // Определяем направление сортировки и добавляем соответствующий индикатор
+    if (order === 1) {
+        header.classList.add('sort-asc');
+    } else {
+        header.classList.add('sort-desc');
+    }
+}
