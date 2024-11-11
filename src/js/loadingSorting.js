@@ -57,3 +57,5 @@ function updateTableBody(tableBody, rows) {
         tableBody.appendChild(row);
     });
 }
+
+

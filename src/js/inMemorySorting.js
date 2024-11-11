@@ -55,3 +55,5 @@ function updateInMemoryTable(tableBody, rows) {
         tableBody.appendChild(row);
     });
 }
+
+// module.exports = { sortInMemoryRows };

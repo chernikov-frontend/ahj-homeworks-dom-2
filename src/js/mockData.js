@@ -39,5 +39,5 @@ function fetchMovies() {
         }, 1000);
     });
 }
-  
+
 export default fetchMovies;
